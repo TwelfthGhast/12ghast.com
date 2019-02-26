@@ -11,7 +11,6 @@ int main(void){
     //Some error handling in case we failed to get a snapshot of running processes
     if(snap==INVALID_HANDLE_VALUE){
         printf("%s",GetLastError());
-        return EXIT_FAILURE;
     }
 
     //Declare a PROCESSENTRY32 variable
@@ -24,7 +23,6 @@ int main(void){
     {
         printf("%s",GetLastError());
         CloseHandle(snap);          // clean the snapshot object
-        return EXIT_FAILURE;
     }
 
     //Cycle through Process List
@@ -43,6 +41,5 @@ int main(void){
         printf("The process ID of process %s is %d", target, pid);
     } else {
         printf("Process '%s' not found. Exiting¡­", target);
-        return EXIT_FAILURE;
     }
 }
