@@ -23,7 +23,7 @@ int main(void) {
         printf("ptr_to_int:\t\t0x%X\t0x%X\n", &ptr_to_int, ptr_to_int);
         printf("ptr_to_ptr:\t\t0x%X\t0x%X\n", &ptr_to_ptr, ptr_to_ptr);
         printf("fixed_string:\t\t0x%X\t%s\n", &fixed_string, fixed_string);
-        printf("fixed_string:\t\t0x%X\t%s\n", &initial_string, initial_string);
+        printf("initial_string:\t\t0x%X\t%s\n", &initial_string, initial_string);
         printf("string_literal:\t\t0x%X\t%s\n", &string_literal, string_literal);
 
         printf("\n------------------------------------\n\n");
@@ -31,4 +31,6 @@ int main(void) {
         getchar();
         printf("------------------------------------\n\n");
     }
+
+    return 0;
 }

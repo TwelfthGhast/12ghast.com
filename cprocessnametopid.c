@@ -51,4 +51,6 @@ int main(void) {
     } else {
         printf("Process '%s' not found. Exiting", target);
     }
+
+    return 0;
 }
