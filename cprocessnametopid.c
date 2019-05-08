@@ -1,16 +1,23 @@
+// Find process ID given a specified process name
+// Coded by Dennis Ying
+// Last updated: 08/05/2019
+// Contact: z5163983@unsw.edu.au
+
 #include <Windows.h>
 #include <tlhelp32.h>
 #include <stdio.h>
 
-int main(void){
+int main(void) {
+
     int pid = 0;
-    char target[] = "main.exe";
+    char *target = "main.exe";
 
     //Create a snapshot of currently running processes
     HANDLE snap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+
     //Some error handling in case we failed to get a snapshot of running processes
-    if(snap==INVALID_HANDLE_VALUE){
-        printf("%s",GetLastError());
+    if (snap == INVALID_HANDLE_VALUE) {
+        printf("%s", GetLastError());
     }
 
     //Declare a PROCESSENTRY32 variable
@@ -19,27 +26,29 @@ int main(void){
     pe32.dwSize = sizeof(PROCESSENTRY32);
 
     // Retrieve information about the first process and exit if unsuccessful
-    if(!Process32First(snap, &pe32) )
-    {
-        printf("%s",GetLastError());
+    if (!Process32First(snap, &pe32)) {
+        printf("%s", GetLastError());
         CloseHandle(snap);          // clean the snapshot object
     }
 
     //Cycle through Process List
     do {
+
         //Uncomment line below if you want your program to spit out every single list
-        //printf("%s\t\t\t%d\n",pe32.szExeFile,pe32.th32ProcessID);
+        //printf("%20s\t\t%d\n",pe32.szExeFile, pe32.th32ProcessID);
         //Comparing two strings containing process names for 'equality'
-        if(strcmp(pe32.szExeFile, target)==0) {
+        if (strcmp(pe32.szExeFile, target) == 0) {
             pid = pe32.th32ProcessID;
         }
+
     } while (Process32Next(snap, &pe32));
+
     //Clean the snapshot object to prevent resource leakage
     CloseHandle(snap);
 
-    if(pid != 0){
+    if (pid != 0) {
         printf("The process ID of process %s is %d", target, pid);
     } else {
-        printf("Process '%s' not found. Exiting¡­", target);
+        printf("Process '%s' not found. Exiting", target);
     }
 }
