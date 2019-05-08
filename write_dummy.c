@@ -26,7 +26,7 @@ int main(void) {
 
     // Declaring our buffers
     int buffer_number = 987654321;
-    char buffer_fixed[] = "12GHAST.COM IS AWESOME";
+    char buffer_fixed[] = "12GHAST.COM IS AWESOME AND THIS STRING IS LONGER THAN OUR PREVIOUS BUT LESS THAN 128";
     char buffer_initial[] = "ShortString";
     char buffer_literal[] = "StRiNgLiTeRaL";
 
