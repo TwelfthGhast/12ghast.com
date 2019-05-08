@@ -12,6 +12,7 @@ int main(void) {
     int **ptr_to_ptr = &ptr_to_int;
     char fixed_string[128];
     strcpy(fixed_string, "This is in a buffer of length 128");
+    char initial_string[] = "InitialValueString";
     char *string_literal = "StringLiteral";
 
     int c = 0;
@@ -22,6 +23,7 @@ int main(void) {
         printf("ptr_to_int:\t\t0x%X\t0x%X\n", &ptr_to_int, ptr_to_int);
         printf("ptr_to_ptr:\t\t0x%X\t0x%X\n", &ptr_to_ptr, ptr_to_ptr);
         printf("fixed_string:\t\t0x%X\t%s\n", &fixed_string, fixed_string);
+        printf("fixed_string:\t\t0x%X\t%s\n", &initial_string, initial_string);
         printf("string_literal:\t\t0x%X\t%s\n", &string_literal, string_literal);
 
         printf("\n------------------------------------\n\n");
